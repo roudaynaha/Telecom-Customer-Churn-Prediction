@@ -1,0 +1,10 @@
+.git
+.gitignore
+drafts/
+__pycache__/
+*.ipynb
+extract.py
+test_model.py
+print_cols.py
+README.md
+WA_Fn-UseC_-Telco-Customer-Churn.csv

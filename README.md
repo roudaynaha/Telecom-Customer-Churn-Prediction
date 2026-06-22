@@ -30,6 +30,10 @@ BusinessClientPrediction/
 ├── 📊 WA_Fn-UseC_-Telco-Customer-Churn.csv   # Dataset source (Telco Customer Churn - IBM)
 ├── 💾 scaler.pkl                              # StandardScaler sauvegardé (généré)
 ├── 🧠 ann_model.h5                            # Modèle ANN sauvegardé (généré)
+├── 🖥️ app.py                                  # Application Streamlit pour l'interface utilisateur
+├── 🐳 Dockerfile                              # Configuration de l'image Docker
+├── 🐳 docker-compose.yml                      # Orchestration du conteneur
+├── 📦 requirements.txt                        # Dépendances du projet
 └── 📄 README.md                               # Ce fichier
 ```
 
@@ -105,12 +109,30 @@ XGBoost a été sélectionné comme modèle final car il offre le meilleur compr
 
 ## 🚀 Installation et Utilisation
 
-### Prérequis
+### Option 1 : Déploiement rapide avec Docker (Application Streamlit)
 
+La méthode la plus simple pour interagir avec le modèle est d'utiliser l'application Web développée avec **Streamlit** et packagée avec **Docker**.
+
+1. Assurez-vous d'avoir [Docker](https://docs.docker.com/get-docker/) et Docker Compose installés.
+2. Ouvrez un terminal dans le dossier du projet.
+3. Lancez la commande suivante :
+   ```bash
+   docker-compose up -d --build
+   ```
+4. Ouvrez votre navigateur et accédez à l'adresse : **http://localhost:8501**
+5. Pour arrêter l'application, exécutez `docker-compose down`.
+
+---
+
+### Option 2 : Installation manuelle (Exploration des Notebooks)
+
+Si vous souhaitez explorer le code, les notebooks Jupyter ou lancer l'application manuellement sans Docker.
+
+#### Prérequis
 - Python 3.9+
 - Jupyter Notebook ou VS Code avec l'extension Jupyter
 
-### Installation
+#### Installation
 
 ```bash
 # Créer et activer l'environnement virtuel 
@@ -118,10 +140,10 @@ python -m venv .venv
 .venv\Scripts\activate   # Windows
 
 # Installer les dépendances
-pip install pandas numpy matplotlib seaborn scikit-learn xgboost tensorflow joblib
+pip install -r requirements.txt
 ```
 
-### Lancement
+#### Lancement des Notebooks
 
 ```bash
 # Ouvrir le notebook final (recommandé pour voir l'ensemble du projet) :
@@ -132,12 +154,19 @@ jupyter notebook drafts/1EDA.ipynb
 jupyter notebook drafts/2Preprocessing.ipynb
 ```
 
+#### Lancement manuel de l'application Streamlit
+
+```bash
+streamlit run app.py
+```
+
 ### Ordre de lecture recommandé
 
 ```
 1️⃣  notebook_final.ipynb         → Démarche complète, résultats finaux et conclusion (à lire en priorité)
 2️⃣  drafts/1EDA.ipynb            → (Optionnel) Détail des premières explorations de données
 3️⃣  drafts/2Preprocessing.ipynb  → (Optionnel) Détail des tests d'algorithmes et d'optimisations
+4️⃣  app.py                       → Script de l'application interactive de prédiction
 ```
 
 ---

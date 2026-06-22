@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  churn-prediction-app:
+    build: .
+    container_name: telecom_churn_app
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
